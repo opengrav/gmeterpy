@@ -1,0 +1,12 @@
+include CONTRIBUTING.rst
+include LICENSE
+include README.rst
+
+# test
+recursive-include gmeterpy test*.py
+
+# docs
+recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif
+
+global-exclude __pycache__ *.py[co]
+
