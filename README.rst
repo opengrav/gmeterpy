@@ -10,6 +10,10 @@ gMeterPy
         :target: https://codecov.io/gh/opengrav/gmeterpy
         :alt: Test coverage status
 
+.. image:: https://readthedocs.org/projects/gmeterpy/badge/?version=latest
+        :target: https://gmeterpy.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
 .. image:: https://img.shields.io/gitter/room/opengrav/gmeterpy.svg 
         :target: https://gitter.im/opengrav/gmeterpy
         :alt: Chat room on Gitter
@@ -34,17 +38,20 @@ corrections, common file formats and processing procedures.
 Install
 -------
 
+You will need **Python 3.5 or greater**.
+
 To install ``gMeterPy`` simply use ``pip`` as usual: 
 
 .. code:: bash
 
-    pip install gmeterpy
+    pip install https://github.com/opengrav/gmeterpy/archive/master.zip
 
-Or with `git`:
+Or clone the git repository locally and run:
 
 .. code:: bash
 
-    git clone https://github.com/opengrav/gmeterpy.git && cd gmeterpy 
+    git clone https://github.com/opengrav/gmeterpy.git
+    cd gmeterpy
     pip install .
 
 

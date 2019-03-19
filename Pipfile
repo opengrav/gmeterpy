@@ -8,6 +8,8 @@ name = "pypi"
 [dev-packages]
 codecov = "*"
 flake8 = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-flake8 = "*"
