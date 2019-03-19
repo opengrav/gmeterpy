@@ -2,6 +2,9 @@
 gMeterPy
 ========
 
+.. image:: https://img.shields.io/travis/opengrav/gmeterpy.svg
+        :target: https://travis-ci.org/opengrav/gmeterpy
+
 .. image:: https://img.shields.io/gitter/room/opengrav/gmeterpy.svg 
         :target: https://gitter.im/opengrav/gmeterpy
         :alt: Chat room on Gitter
