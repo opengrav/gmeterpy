@@ -1,0 +1,5 @@
+[run]
+source=gmeterpy
+disable_warnings = no-data-collected
+omit =
+    */tests/*

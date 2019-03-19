@@ -4,6 +4,11 @@ gMeterPy
 
 .. image:: https://img.shields.io/travis/opengrav/gmeterpy.svg
         :target: https://travis-ci.org/opengrav/gmeterpy
+        :alt: TravisCI build status
+
+.. image:: https://codecov.io/gh/opengrav/gmeterpy/branch/master/graph/badge.svg
+        :target: https://codecov.io/gh/opengrav/gmeterpy
+        :alt: Test coverage status
 
 .. image:: https://img.shields.io/gitter/room/opengrav/gmeterpy.svg 
         :target: https://gitter.im/opengrav/gmeterpy
