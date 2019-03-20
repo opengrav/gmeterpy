@@ -6,7 +6,7 @@ install:
     - pip install pipenv
     - pipenv install --dev --skip-lock
 script: 
-    - pipenv run pytest --flake8 --cov=gmeterpy
+    - pipenv run pytest gmeterpy --flake8 --cov=gmeterpy
 after_success:
     - codecov
 notifications:

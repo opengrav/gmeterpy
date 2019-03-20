@@ -10,3 +10,5 @@ recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif
 
 global-exclude __pycache__ *.py[co]
 
+include versioneer.py
+include gmeterpy/_version.py

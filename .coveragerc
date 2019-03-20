@@ -1,5 +1,7 @@
 [run]
 source=gmeterpy
+branch = True
 disable_warnings = no-data-collected
 omit =
     */tests/*
+    */_version.py
