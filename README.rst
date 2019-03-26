@@ -28,6 +28,7 @@ raw data from all types of gravimeters.
 
 About
 -----
+
 *gMeterPy* is an open source and free Python library for processing 
 measurement data from gravimeters, which are used for gravity field surveys 
 in geodesy, geophysics and other branches of Earth and planetary sciences. 
@@ -61,6 +62,10 @@ Contributing
 There are many ways you can contribute! Please read 
 `CONTRIBUTING.rst <https://github.com/opengrav/gmeterpy/blob/master/CONTRIBUTING.rst>`__
 to see how you can help and give feedback.
+
+Please note also that *gMeterPy* is released with a Code of Conduct 
+(see `CODE_OF_CONDUCT.md <https://github.com/opengrav/gmeterpy/blob/master/CODE_OF_CONDUCT.md>`__).
+By participating in this project you agree that you will follow all its terms.
 
 License
 -------
