@@ -5,6 +5,7 @@ include README.rst
 
 # test
 recursive-include gmeterpy test*.py
+recursive-include gmeterpy/*/tests/data *
 
 # docs
 recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif

@@ -1,19 +1,41 @@
-# Minimal makefile for Sphinx documentation
+# Makefile for Sphinx documentation
 #
 
-# You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
+SPHINXAUTOGEN = sphinx-autogen
 SOURCEDIR     = .
 BUILDDIR      = _build
 
-# Put it first so that "make" without argument is like "make help".
+.PHONY: help clean api html linkcheck doctest serve
+
+all: html
+
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-.PHONY: help Makefile
+clean:
+	rm -rf $(BUILDDIR)/* $(SOURCEDIR)/api/_autosummary
 
-# Catch-all target: route all unknown targets to Sphinx using the new
-# "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
-%: Makefile
-	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+api:
+	@echo
+	@echo "Building API Reference."
+	@echo
+	@$(SPHINXAUTOGEN) -i -t $(SOURCEDIR)/_templates -o $(SOURCEDIR)/api/_autosummary $(SOURCEDIR)/api/*.rst
+
+html: api
+	@echo
+	@echo "Building HTML files."
+	@echo
+	$(SPHINXBUILD) -b html -d $(BUILDDIR)/doctrees $(SPHINXOPTS) . $(BUILDDIR)/html
+	@echo
+	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+
+linkcheck: api
+	$(SPHINXBUILD) -b linkcheck -d $(BUILDDIR)/doctrees $(SPHINXOPTS) . $(BUILDDIR)/linkcheck
+
+doctest: api
+	$(SPHINXBUILD) -b doctest -d $(BUILDDIR)/doctrees $(SPHINXOPTS) . $(BUILDDIR)/doctest
+
+serve:
+	cd $(BUILDDIR)/html && python -m http.server 8001

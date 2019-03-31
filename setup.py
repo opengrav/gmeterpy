@@ -34,7 +34,7 @@ setup(
     keywords=['geodesy', 'gravimetry', 'geophysics'],
     install_requires=requirements,
     include_package_data=True,
-    packages=find_packages(include=['gmeterpy']),
+    packages=find_packages(),
     url='https://github.com/opengrav/gmeterpy',
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),

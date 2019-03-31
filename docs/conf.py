@@ -41,6 +41,7 @@ release = gmeterpy.__version__
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
     'sphinx.ext.doctest',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
@@ -48,6 +49,10 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
     ]
+
+autodoc_default_flags = ['members']
+autosummary_generate = True
+add_module_names = False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

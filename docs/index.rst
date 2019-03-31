@@ -5,8 +5,10 @@ Welcome to gMeterPy's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :hidden:
 
+   install.rst
+   api/index.rst
    contributing.rst
 
 
