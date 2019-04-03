@@ -2,6 +2,10 @@
 gMeterPy
 ========
 
+.. image:: http://img.shields.io/pypi/v/gmeterpy.svg
+        :target: https://pypi.python.org/pypi/gmeterpy
+        :alt: Latest version on PyPI
+
 .. image:: https://img.shields.io/travis/opengrav/gmeterpy.svg
         :target: https://travis-ci.org/opengrav/gmeterpy
         :alt: TravisCI build status
