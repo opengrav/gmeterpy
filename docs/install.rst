@@ -41,3 +41,4 @@ The ``gMeterPy`` depends on several open source projects:
 * `SciPy <https://docs.scipy.org/doc/scipy/reference/>`__
 * `pandas <http://pandas.pydata.org/>`__
 * `Matplotlib <https://matplotlib.org/>`__
+* `Astropy <https://astropy.org/>`__

@@ -6,7 +6,7 @@ This module contains the atmospheric correction to the gravity observations.
 
 
 def normal_pressure(height):
-    r"""Returns normal atmospheric pressure, in Pa.
+    r"""Normal atmospheric pressure, in Pa.
 
     Parameters
     ----------
@@ -42,7 +42,7 @@ def normal_pressure(height):
 
 
 def atmospheric_pressure_correction(height, pressure, barometric_factor=0.30):
-    r"""Returns atmospheric pressure correction, in m/s**2.
+    r"""Atmospheric pressure correction, in m/s**2.
 
     Parameters
     ----------

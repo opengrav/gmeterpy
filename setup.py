@@ -10,7 +10,7 @@ import versioneer
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 
-requirements = []
+requirements = ['numpy', 'astropy']
 
 setup(
     name='gmeterpy',

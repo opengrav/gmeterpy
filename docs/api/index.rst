@@ -12,3 +12,4 @@ Gravity Corrections and Reductions
    :toctree: _autosummary
 
    gmeterpy.corrections.atmosphere
+   gmeterpy.corrections.polar_motion
