@@ -14,6 +14,14 @@ gMeterPy
         :target: https://codecov.io/gh/opengrav/gmeterpy
         :alt: Test coverage status
 
+.. image:: https://img.shields.io/codacy/grade/2c08b4ce758f484e8ac0aafddbd6ada7.svg
+        :target: https://www.codacy.com/app/ioshchepkov/gmeterpy
+        :alt: Codacy grade
+
+.. image:: https://img.shields.io/pypi/pyversions/gmeterpy.svg
+        :alt: Compatible Python versions
+        :target: https://pypi.python.org/pypi/gmeterpy
+
 .. image:: https://readthedocs.org/projects/gmeterpy/badge/?version=latest
         :target: https://gmeterpy.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status

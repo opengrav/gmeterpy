@@ -36,13 +36,13 @@ def test_get_polar_motion():
 
     # Bulletin A
     time = Time.now()
-    xp, yp, status = pm.get_polar_motion(time, return_status=True)
+    _, _, status = pm.get_polar_motion(time, return_status=True)
     assert status[0] == 'IERS_A'
 
     # Out of range
     delta = TimeDelta(400, format='jd')
     time += delta
-    xp, yp, status = pm.get_polar_motion(time, return_status=True)
+    _, _, status = pm.get_polar_motion(time, return_status=True)
     assert status[0] == 'OUT_OF_RANGE'
 
 
