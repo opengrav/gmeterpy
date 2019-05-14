@@ -1,6 +1,7 @@
 exclude_paths:
   - 'docs/**'
   - 'versioneer.py'
+  - 'CODE_OF_CONDUCT.md'
   - '**/_version.py'
   - '**/__init__.py'
   - '**/tests/**'
