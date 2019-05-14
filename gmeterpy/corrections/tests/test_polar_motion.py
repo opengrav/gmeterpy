@@ -7,9 +7,9 @@ import os
 import numpy as np
 
 import pytest
-
 from astropy.time import Time, TimeDelta
 
+import gmeterpy.units as u
 import gmeterpy.corrections.polar_motion as pm
 
 
@@ -25,14 +25,14 @@ def test_get_polar_motion():
     pm_xy = pm.get_polar_motion(time, return_status=True)
     assert len(pm_xy) == 3
     assert pm_xy[-1][0] == 'IERS_B'
-    np.testing.assert_almost_equal(pm_xy[0], 0.075311, 6)
-    np.testing.assert_almost_equal(pm_xy[1], 0.289933, 6)
+    np.testing.assert_almost_equal(pm_xy[0].value, 0.075311, 6)
+    np.testing.assert_almost_equal(pm_xy[1].value, 0.289933, 6)
 
     # Bulletin B with no status
     pm_xy = pm.get_polar_motion(time, return_status=False)
     assert len(pm_xy) == 2
-    np.testing.assert_almost_equal(pm_xy[0], 0.075311, 6)
-    np.testing.assert_almost_equal(pm_xy[1], 0.289933, 6)
+    np.testing.assert_almost_equal(pm_xy[0].value, 0.075311, 6)
+    np.testing.assert_almost_equal(pm_xy[1].value, 0.289933, 6)
 
     # Bulletin A
     time = Time.now()
@@ -50,9 +50,9 @@ def test_polar_motion_correction():
     """Test polar motion correction.
 
     """
-    xp, yp = 0.1375, 0.3944
-    lat, lon = 55.855, 37.516
+    xp, yp = 0.1375 * u.arcsec, 0.3944 * u.arcsec
+    lat, lon = 55.855 * u.deg, 37.516 * u.deg
 
-    grav_corr = pm.polar_motion_correction(xp, yp, lat, lon) * 1e8
+    grav_corr = pm.polar_motion_correction(xp, yp, lat, lon)
 
-    assert round(grav_corr, 2) == 2.33
+    assert grav_corr.round(2) == 2.33 * u.uGal

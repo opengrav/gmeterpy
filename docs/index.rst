@@ -8,6 +8,7 @@ Welcome to gMeterPy's documentation!
    :hidden:
 
    install.rst
+   user_guide.rst
    api/index.rst
    contributing.rst
 

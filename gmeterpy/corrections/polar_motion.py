@@ -6,10 +6,11 @@ This module contains the polar motion correction to the gravity observations.
 """
 
 import warnings
-
 import numpy as np
-
 from astropy.utils import iers
+
+import gmeterpy.units as u
+from gmeterpy.constants import omega
 
 
 iers.conf.auto_max_age = 10
@@ -50,7 +51,7 @@ def get_polar_motion(time, return_status=False):
 
     Returns
     -------
-    xp, yp : float or array_like
+    xp, yp : ~astropy.units.Quantity
         Polar motion coordinates, in arcsec.
     status : str or list
         Status values (if `return_status`=`True`):
@@ -69,33 +70,34 @@ def get_polar_motion(time, return_status=False):
 
     if return_status:
         status_new = [STATUS.get(e, e) for e in status.ravel()]
-        return xp.value, yp.value, status_new
+        return xp, yp, status_new
     else:
-        return xp.value, yp.value
+        return xp, yp
 
 
-def polar_motion_correction(xp, yp, lat, lon, radius=6378136, delta=1.164):
-    r"""Polar motion correction, in m/s**2.
+@u.quantity_input(xp=u.rad, yp=u.rad, lat=u.deg, lon=u.deg, radius=u.m)
+def polar_motion_correction(xp, yp, lat, lon, radius=6378136 * u.m, delta=1.164):
+    r"""Polar motion correction.
 
     Parameters
     ----------
-    xp : float
-        x coordinate of the terrestrial pole, in arcsec.
-    yp : float
-        y coordinate of the terrestrial pole, in arcsec.
-    lat : float
-        Geocentric latitude of the observation point referred to IERS pole, in degrees.
-    lon : float
-        Geocentric longitude of the observation point referred to IERS pole, in degrees.
-    radius : float, optional
-        Geocentric radius, in metres. Default value is `r = a = 6378136` m.
+    xp : ~astropy.units.Quantity
+        x coordinate of the terrestrial pole.
+    yp : ~astropy.units.Quantity
+        y coordinate of the terrestrial pole.
+    lat : ~astropy.units.Quantity
+        Geocentric latitude of the observation point referred to IERS pole.
+    lon : ~astropy.units.Quantity
+        Geocentric longitude of the observation point referred to IERS pole.
+    radius : ~astropy.units.Quantity, optional
+        Geocentric radius. Default value is `r = a = 6378136` m.
     delta : float, optional
         Gravimetric amplitude factor, default is 1.164.
 
     Returns
     -------
-    float or array_like:
-        Polar motion correction, in m/s**2.
+    delta_g_polar : ~astropy.units.Quantity
+        Polar motion correction.
 
     Notes
     -----
@@ -107,7 +109,7 @@ def polar_motion_correction(xp, yp, lat, lon, radius=6378136, delta=1.164):
 
     .. math::
 
-       \delta g = -\delta\omega^2\times r \times 2 \times
+       \Delta g = -\delta\omega^2\times r \times 2 \times
        \sin\phi\cos\phi\left(x_p\cos\lambda - y_p\sin\lambda\right)\quad
        [\textrm{ms}^{-2}]
 
@@ -125,14 +127,7 @@ def polar_motion_correction(xp, yp, lat, lon, radius=6378136, delta=1.164):
 
     """
 
-    omega = 7292115e-11
+    delta_lat = xp * np.cos(lon) - yp * np.sin(lon)
+    delta_g_polar = -delta * omega**2 * radius * np.sin(2 * lat) * delta_lat
 
-    xp = np.radians(xp / 3600)
-    yp = np.radians(yp / 3600)
-    lat = np.radians(lat)
-    lon = np.radians(lon)
-
-    coords = 2 * np.sin(lat) * np.cos(lat) * \
-        (xp * np.cos(lon) - yp * np.sin(lon))
-
-    return -delta * omega**2 * radius * coords
+    return delta_g_polar.to(u.uGal, equivalencies=u.dimensionless_angles())
